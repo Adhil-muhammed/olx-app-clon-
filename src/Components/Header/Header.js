@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { Link} from 'react-router-dom';
 import './Header.css';
 import OlxLogo from '../../assets/OlxLogo';
 import Search from '../../assets/Search';
@@ -34,7 +34,9 @@ function Header() {
           <Arrow></Arrow>
         </div>
         <div className="loginPage">
+          <Link to={'/signup'}>
           <span>Login</span>
+          </Link>
           <hr />
         </div>
 
