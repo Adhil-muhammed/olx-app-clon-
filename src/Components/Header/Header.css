@@ -162,3 +162,6 @@
     display: none;
   }
 }
+.pointer{
+  cursor: pointer;
+}

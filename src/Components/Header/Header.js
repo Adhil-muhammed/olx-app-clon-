@@ -1,12 +1,29 @@
-import React from 'react';
-import { Link} from 'react-router-dom';
-import './Header.css';
-import OlxLogo from '../../assets/OlxLogo';
-import Search from '../../assets/Search';
-import Arrow from '../../assets/Arrow';
-import SellButton from '../../assets/SellButton';
-import SellButtonPlus from '../../assets/SellButtonPlus';
+import React, { useContext } from "react";
+import { context1, FireContext } from "../../FirebseContext/Context";
+import { Link, useHistory } from "react-router-dom";
+import "./Header.css";
+import OlxLogo from "../../assets/OlxLogo";
+import Search from "../../assets/Search";
+import Arrow from "../../assets/Arrow";
+import SellButton from "../../assets/SellButton";
+import SellButtonPlus from "../../assets/SellButtonPlus";
+
 function Header() {
+  const { firebase } = useContext(FireContext);
+  const { nameOfuser } = useContext(context1);
+  const history = useHistory();
+  const changeDirectory = () => {
+    firebase
+      .auth()
+      .signOut()
+      .then(() => {
+        alert("confirm to LogOut");
+      })
+      .then(() => {
+        history.push("/Login");
+      });
+  };
+
   return (
     <div className="headerParentDiv">
       <div className="headerChildDiv">
@@ -30,21 +47,26 @@ function Header() {
           </div>
         </div>
         <div className="language">
-          <span> ENGLISH </span>
+          <span> English</span>
           <Arrow></Arrow>
         </div>
         <div className="loginPage">
-          <Link to={'/signup'}>
-          <span>Login</span>
+          <Link to={"/signup"}>
+            <span>
+              {nameOfuser ? `Welcome mr:  ${nameOfuser.displayName}` : "Login"}
+            </span>
           </Link>
           <hr />
         </div>
+        {nameOfuser ? <span className="pointer"  onClick={changeDirectory}>Loge out</span> : ""}
 
         <div className="sellMenu">
           <SellButton></SellButton>
           <div className="sellMenuContent">
             <SellButtonPlus></SellButtonPlus>
-            <span>SELL</span>
+            <Link to={"/Creat"}>
+              <span>SELL</span>
+            </Link>
           </div>
         </div>
       </div>

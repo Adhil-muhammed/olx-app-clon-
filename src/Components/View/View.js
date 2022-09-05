@@ -1,14 +1,12 @@
-import React from 'react';
+import React from "react";
 
-import './View.css';
+import "./View.css";
 function View() {
+  
   return (
     <div className="viewParentDiv">
       <div className="imageShowDiv">
-        <img
-          src="../../../Images/R15V3.jpg"
-          alt=""
-        />
+        <img src="../../../Images/R15V3.jpg" alt="" />
       </div>
       <div className="rightSection">
         <div className="productDetails">

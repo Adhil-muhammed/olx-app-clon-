@@ -36,7 +36,7 @@
   padding: 13px;
   max-width: 222px;
   width: 222px;
-  height: 270px;
+  height: 344px;
   display: inline-block;
   cursor: pointer;
 }
@@ -54,7 +54,7 @@
 }
 
 .card .image img {
-  height: 100px;
+  height: 186px;
   max-width: 100%;
   max-height: 100%;
   min-height: 100%;
