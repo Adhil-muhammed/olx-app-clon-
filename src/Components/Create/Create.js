@@ -30,7 +30,7 @@ const Create = () => {
             console.log(url);
             firebase
               .firestore()
-              .collection("new items")
+              .collection("items added")   //action needed
               .add({
                 name,
                 category,

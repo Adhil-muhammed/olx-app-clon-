@@ -2,6 +2,7 @@ import React from "react";
 import { useContext, useEffect, useState } from "react";
 import { FireContext } from "../../FirebseContext/Context";
 import Heart from "../../assets/Heart";
+// import {Link} from "react-router-dom"
 import "./Post.css";
 
 function Posts() {
@@ -11,7 +12,7 @@ function Posts() {
   useEffect(() => {
     firebase
       .firestore()
-      .collection("new items") //get the data from 'new item' collection
+      .collection("items added") //get the data from 'new item' collection
       .get()
       .then((snapshot) => {
         // get function returning a snapshot
@@ -25,6 +26,18 @@ function Posts() {
         setProducts(allPost);
       });
   }, []);
+  const Deleate = (id) => {
+    firebase
+      .collection("")
+      .doc(id)
+      .delete()
+      .then(() => {
+        console.log("Document successfully deleted!");
+      })
+      .catch((error) => {
+        console.error("Error removing document: ", error);
+      });
+  };
   return (
     <div className="postParentDiv">
       <div className="moreView">
@@ -39,7 +52,7 @@ function Posts() {
                 <div className="favorite">
                   <Heart></Heart>
                 </div>
-
+                {/* <span onClick={Deleate("n2aSUq51AqDT5ZyuO1KF")}></span> */}
                 <div className="image">
                   <img src={items.url} alt="" />
                 </div>
